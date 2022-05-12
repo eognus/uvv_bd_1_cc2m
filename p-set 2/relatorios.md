@@ -15,3 +15,8 @@ create table relatorio_3 (
                                       -> salario decimal (10, 2)
                                       -> );
 insert into relatorio_3 (select all nome_departamento, primeiro_nome + nome_meio + ultimo_nome, data_nascimento,NULL , salario from funcionario,departamento where funcionario.numero_departamento = departamento.numero_departamento group by nome_departamento);
+select * from relatorio_3;
+
+select d.nome_departamento, concat(f.primeiro_nome, f.nome_meio, f.ultimo_nome) as nome, f.data_nascimento, f.salario
+from funcionario f
+inner join departamento d on (f.numero_departamento = d.numero_departamento);
